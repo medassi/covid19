@@ -83,7 +83,6 @@ public class FXMLController implements Initializable {
         lvDept.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         loadPane(model.getlWorld(), vBoxWorld, "Monde");
         loadPane(model.getlFrance(), vBoxFR, "France");
-
     }
 
     @FXML
@@ -132,13 +131,15 @@ public class FXMLController implements Initializable {
             }
         }
         CategoryAxis xAxis = new CategoryAxis(categories);
+        xAxis.setLabel("Cas - " + univers);
         NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Date");
         LineChart linechart = new LineChart(xAxis, yAxis);
         linechart.getData().add(seriesDeces);
         linechart.getData().add(seriesCasConfirmes);
         linechart.getData().add(seriesGueris);
         linechart.getYAxis().setAutoRanging(true);
-
+        linechart.setTitle(univers);
         toolTipper(seriesDeces, " décés " + univers);
         toolTipper(seriesCasConfirmes, " cas confimés " + univers);
         toolTipper(seriesGueris, " guérisons " + univers);
@@ -176,7 +177,7 @@ public class FXMLController implements Initializable {
                 if (d.getGueris() != -1) {
                     serieGueris.getData().add(new XYChart.Data<>(sdf.format(d.getDate()), d.getGueris()));
                 }
-                univers=d.getNom() ;
+                univers = d.getNom();
             }
             serieCasConfirmes.setName("Conf. " + univers);
             serieDeces.setName("Décés " + univers);
@@ -184,18 +185,24 @@ public class FXMLController implements Initializable {
             seriesCasConfirmes.add(serieCasConfirmes);
             seriesDeces.add(serieDeces);
             seriesGueris.add(serieGueris);
-            toolTipper(serieDeces, " décés "+univers);
-            toolTipper(serieCasConfirmes, " cas confimés "+univers);
-            toolTipper(serieGueris, " guérisons "+univers);
         }
         CategoryAxis xAxis = new CategoryAxis(categories);
         NumberAxis yAxis = new NumberAxis();
         LineChart linechart = new LineChart(xAxis, yAxis);
+        linechart.setTitle(univers);
         linechart.getData().addAll(seriesDeces);
         linechart.getData().addAll(seriesCasConfirmes);
         linechart.getData().addAll(seriesGueris);
         linechart.getYAxis().setAutoRanging(true);
-
+        for (XYChart.Series<String, Integer> s : seriesCasConfirmes) {
+            toolTipper(s, " cas confimés " + univers);
+        }
+        for (XYChart.Series<String, Integer> s : seriesDeces) {
+            toolTipper(s, " décés " + univers);
+        }
+        for (XYChart.Series<String, Integer> s : seriesGueris) {
+            toolTipper(s, " guérisons " + univers);
+        }
         vBoxDept.getChildren().clear();
         vBoxDept.getChildren().add(linechart);
     }

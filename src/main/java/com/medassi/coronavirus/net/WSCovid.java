@@ -70,7 +70,7 @@ public class WSCovid {
 
         SSLContext sc;
         try {
-            sc = SSLContext.getInstance("SSL");
+            sc = SSLContext.getInstance("TLSv1.2");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
             HostnameVerifier allHostsValid = new HostnameVerifier() {
