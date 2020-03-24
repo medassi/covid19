@@ -66,16 +66,7 @@ public class Model {
     }
 
     private void nettoyer(ArrayList<Data> l) {
-        ArrayList<String> lesDates = new ArrayList<>();
-        ArrayList<Data> aSupp = new ArrayList<>();
-        for (Data d : l) {
-            if (lesDates.contains(d.getDate().toString())) {
-                aSupp.add(d);
-            } else {
-                lesDates.add(d.getDate().toString());
-            }
-        }
-        l.removeAll(aSupp);
+       //A faire
     }
 
     public ArrayList<String> getDepts() {
@@ -84,6 +75,14 @@ public class Model {
         Collections.sort(deptsArrayList);
         return deptsArrayList;
     }
+    
+    public ArrayList<String> getRegs() {
+        Set<String> regsSet = hmByReg.keySet();
+        ArrayList<String> regsArrayList = new ArrayList<>(regsSet);
+        Collections.sort(regsArrayList);
+        return regsArrayList;
+    }
+    
 
     public ArrayList<Data> getlWorld() {
         return lWorld;

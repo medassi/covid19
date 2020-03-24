@@ -27,8 +27,6 @@ public class Data implements Comparable<Data> {
     private final String nom;
     private final String code;
     private final int casConfirmes;
-    private final int deces;
-    private final int gueris;
     private final int reanimation;
     private final int hospitalises;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,8 +43,6 @@ public class Data implements Comparable<Data> {
         this.nom = jsono.get("nom") != null ? jsono.get("nom").toString() : "";
         this.code = jsono.get("code").toString();
         this.casConfirmes = jsono.get("casConfirmes") != null ? Integer.parseInt(jsono.get("casConfirmes").toString()) : -1;
-        this.deces = jsono.get("deces") != null ? Integer.parseInt(jsono.get("deces").toString()) : -1;
-        this.gueris = jsono.get("gueris") != null ? Integer.parseInt(jsono.get("gueris").toString()) : -1;
         this.reanimation = jsono.get("reanimation") != null ? Integer.parseInt(jsono.get("reanimation").toString()) : -1;
         this.hospitalises = jsono.get("hospitalises") != null ? Integer.parseInt(jsono.get("hospitalises").toString()) : -1;
         if (jsono.get("victimes") != null) {
@@ -81,15 +77,6 @@ public class Data implements Comparable<Data> {
     public int getCasConfirmes() {
         return casConfirmes;
     }
-
-    public int getDeces() {
-        return deces;
-    }
-
-    public int getGueris() {
-        return gueris;
-    }
-
 
     public ObservableList<Victime> getVictimes() {
         return victimes;

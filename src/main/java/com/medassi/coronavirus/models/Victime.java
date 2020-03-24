@@ -29,6 +29,15 @@ public class Victime {
             Logger.getLogger(Victime.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    
     
     
 }

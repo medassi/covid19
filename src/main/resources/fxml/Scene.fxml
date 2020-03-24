@@ -18,6 +18,7 @@
       </HBox>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
+            <ListView fx:id="lvReg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onMouseClickedLvReg" prefHeight="150.0" prefWidth="131.0" />
             <ListView fx:id="lvDept" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onMouseClickedLvDept" prefHeight="150.0" prefWidth="131.0" />
             <VBox fx:id="vBoxDept" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="100.0" HBox.hgrow="ALWAYS" />
          </children>
