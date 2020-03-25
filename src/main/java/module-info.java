@@ -5,5 +5,6 @@ module com.medassi.coronavirus {
     requires org.controlsfx.controls;
     opens com.medassi.coronavirus to javafx.fxml;
     exports com.medassi.coronavirus;
+    requires json.simple;
     
 }
